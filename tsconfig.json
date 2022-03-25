@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@controllers/*": ["controllers/*"],
+      "@databases": ["databases"],
+      "@dtos/*": ["dtos/*"],
+      "@exceptions/*": ["exceptions/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@models/*": ["models/*"],
+      "@routes/*": ["routes/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", ".env", "src/seeder.ts", "src/seeder.ts",
+    "src/utils/email", "src/seeder.mjs"],
+  "exclude": ["node_modules"]
+}
