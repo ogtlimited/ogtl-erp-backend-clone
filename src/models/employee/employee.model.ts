@@ -16,7 +16,8 @@ const employeeSchema: Schema = new Schema(
     },
     date_of_joining: {
       type: Date,
-      required: true,
+     
+
     },
     default_shift: {
       type: Schema.Types.ObjectId,

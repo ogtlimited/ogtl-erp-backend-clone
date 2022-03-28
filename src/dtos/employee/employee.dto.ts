@@ -1,17 +1,21 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/adjacent-overload-signatures */
-
-import { Type } from 'class-transformer';
-import { IsEmail, IsString, IsBoolean, IsNumber, IsDateString, IsOptional, ValidateNested } from 'class-validator';
+import { IsEmail, IsString, IsBoolean, IsNumber, IsDateString, IsOptional } from 'class-validator';
 
 export class CreateEmployeeDto {
 
 
   @IsDateString()
+  @IsOptional()
   public date_of_joining: string;
 
   @IsString()
+  @IsOptional()
   public default_shift: string;
+
+  @IsString()
+  @IsOptional()
+  public ogid: string;
 
   @IsString()
   @IsOptional()
@@ -24,6 +28,7 @@ export class CreateEmployeeDto {
   public company_email: string;
 
   @IsString()
+  @IsOptional()
   public designation: string;
 
   @IsString()
@@ -46,6 +51,7 @@ export class CreateEmployeeDto {
   public middle_name: string;
 
   @IsString()
+  @IsOptional()
   public reports_to: string;
 
   @IsString()
@@ -64,9 +70,11 @@ export class CreateEmployeeDto {
   public isLeaverApprover: boolean;
 
   @IsString()
+  @IsOptional()
   public employeeType: string;
 
   @IsString()
+  @IsOptional()
   public projectId: string;
 
   @IsOptional()
@@ -161,6 +169,9 @@ export class UpdateEmployeeRoleDto{
 export class EmployeeLoginDto {
   @IsString()
   public company_email: string;
+
+  @IsString()
+  public password: string;
 
   @IsOptional()
   @IsString()
