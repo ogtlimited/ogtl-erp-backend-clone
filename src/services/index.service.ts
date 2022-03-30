@@ -229,5 +229,19 @@ class CombineServices {
       jobOpenings
     }
   }
+
+  public async employeeRegister(){
+    const departments = await this.departmentS.findAllDepartments()
+    const designations = await this.designationS.findAllDesignations()
+    const shifts = await this.shiftS.findAllshiftType()
+    const roles = await this.roleS.findAll()
+
+    return {
+      departments,
+      designations,
+      shifts,
+      roles
+    }
+  }
 }
  export default CombineServices

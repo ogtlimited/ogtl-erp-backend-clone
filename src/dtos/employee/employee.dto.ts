@@ -15,6 +15,10 @@ export class CreateEmployeeDto {
 
   @IsString()
   @IsOptional()
+  public role: string;
+
+  @IsString()
+  @IsOptional()
   public ogid: string;
 
   @IsString()

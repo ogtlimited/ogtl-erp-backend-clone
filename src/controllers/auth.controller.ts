@@ -23,9 +23,9 @@ class AuthController {
   public SignUp = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: CreateEmployeeDto = req.body;
-      const { token, createEmployeeData } = await this.authService.signup(userData);
+      const { token, findUser } = await this.authService.signup(userData);
 
-      res.status(200).json({ createEmployeeData, message: 'Account created successfully', token });
+      res.status(200).json({ findUser, message: 'Account created successfully', token });
     } catch (error) {
       next(error);
     }

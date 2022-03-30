@@ -26,6 +26,7 @@ class IndexRoute implements Routes {
     this.router.get(`${this.path}profile-dashboard/:id`, this.indexController.getEmployeeFUllData);
     this.router.get(`${this.path}accounts-dashboard`, this.indexController.getAccountsDashboard);
     this.router.get(`${this.path}job-dashboard`, this.indexController.jobDashboard);
+    this.router.get(`${this.path}employee-register`, this.indexController.employeeRegister);
 
   }
 }

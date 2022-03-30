@@ -131,6 +131,16 @@ class IndexController {
       next(e)
     }
   }
+
+  public employeeRegister = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const employeeRegisterationData = await this.indexS.employeeRegister()
+      res.status(200).json({ employeeRegisterationData, message: 'Employee registeration Data' });
+    }
+    catch (e) {
+      next(e)
+    }
+  }
 }
 
 export default IndexController;

@@ -16,7 +16,7 @@ import { isEmpty } from '@utils/util';
 class AuthService {
   private Employees = EmployeeModel;
   private empS = new EmployeeService()
-  public async signup(EmployeeData: CreateEmployeeDto): Promise<{ token: any; createEmployeeData: Employee }> {
+  public async signup(EmployeeData: CreateEmployeeDto): Promise<{ token: any; findUser: Employee }> {
     if (isEmpty(EmployeeData)) throw new HttpException(400, "No EmployeeData given");
 
     const findEmployee: Employee = await this.Employees.findOne({ company_email: EmployeeData.company_email });
@@ -26,14 +26,16 @@ class AuthService {
     const hashedPassword = await bcrypt.hash(EmployeeData.password, 10);
 
     const createEmployeeData: Employee = await this.Employees.create({ ...EmployeeData, password: hashedPassword });
+    const findUser: Employee = await this.Employees.findOne({ where: { email: createEmployeeData.company_email } }).populate("default_shift department designation role salaryStructure_id branch");
+
     const token = this.createToken(createEmployeeData);
-    return {createEmployeeData,token};
+    return {findUser,token};
   }
 
   public async login(EmployeeData: EmployeeLoginDto): Promise<{ token: any; findUser: Employee }> {
     if (isEmpty(EmployeeData)) throw new HttpException(400, "You're not EmployeeData");
 
-    const findUser: Employee = await this.Employees.findOne({ where: { email: EmployeeData.company_email } });
+    const findUser: Employee = await this.Employees.findOne({ company_email: EmployeeData.company_email }).populate("default_shift department designation role salaryStructure_id branch");
     if (!findUser) throw new HttpException(409, `You're email ${EmployeeData.company_email} not found`);
 
     const isPasswordMatching: boolean = await compare(EmployeeData.password, findUser.password);
@@ -47,7 +49,7 @@ class AuthService {
   public async logout(EmployeeData: EmployeeLoginDto): Promise<Employee> {
     if (isEmpty(EmployeeData)) throw new HttpException(400, "You're not EmployeeData");
 
-    const findEmployee: Employee = await this.Employees.findOne({ email: EmployeeData.company_email });
+    const findEmployee: Employee = await this.Employees.findOne({ company_email: EmployeeData.company_email });
 
     if (!findEmployee) throw new HttpException(409, `Ogid ${EmployeeData.company_email} not found`);
 
