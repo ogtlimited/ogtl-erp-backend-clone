@@ -26,7 +26,7 @@ class AuthService {
     const hashedPassword = await bcrypt.hash(EmployeeData.password, 10);
 
     const createEmployeeData: Employee = await this.Employees.create({ ...EmployeeData, password: hashedPassword });
-    const findUser: Employee = await this.Employees.findOne({ where: { email: createEmployeeData.company_email } }).populate("default_shift department designation role salaryStructure_id branch");
+    const findUser: Employee = await this.Employees.findOne({ company_email: EmployeeData.company_email }).populate("default_shift department designation role salaryStructure_id branch");
 
     const token = this.createToken(createEmployeeData);
     return {findUser,token};
