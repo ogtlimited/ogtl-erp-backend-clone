@@ -31,17 +31,17 @@ class AuthController {
     }
   };
 
-  public logOut = async (req: RequestWithUser, res: Response, next: NextFunction) => {
-    try {
-      const userData: EmployeeLoginDto = req.user;
-      const logOutUserData: Employee = await this.authService.logout(userData);
+  // public logOut = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+  //   try {
+  //     const userData: EmployeeLoginDto = req.user;
+  //     const logOutUserData: Employee = await this.authService.logout(userData);
 
-      res.setHeader('Set-Cookie', ['Authorization=; Max-age=0']);
-      res.status(200).json({ data: logOutUserData, message: 'logout' });
-    } catch (error) {
-      next(error);
-    }
-  };
+  //     res.setHeader('Set-Cookie', ['Authorization=; Max-age=0']);
+  //     res.status(200).json({ data: logOutUserData, message: 'logout' });
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // };
 }
 
 export default AuthController;
