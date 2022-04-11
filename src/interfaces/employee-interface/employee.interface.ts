@@ -16,17 +16,19 @@ export interface Employee {
     image: string;
     branch:string;
     employeeType:string;
-    projectId:string;
+    projectId?:string;
     status: string;
     permissionLevel: number;
     warningCount: number;
-    isInPIP: boolean
-    isAdmin: boolean
-    isTeamLead: boolean
-    isSupervisor: boolean
-    leaveCount: number,
-    isRepSiever: boolean,
-    isLeaverApprover: boolean,
-    sievedApplicationCount: number
+    isInPIP: boolean;
+    isAdmin: boolean;
+    isExpatriate?: boolean;
+    isEmployee?: boolean;
+    isTeamLead: boolean;
+    isSupervisor: boolean;
+    leaveCount: number;
+    isRepSiever: boolean;
+    isLeaverApprover: boolean;
+    sievedApplicationCount: number;
 
 }

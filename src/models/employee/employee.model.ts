@@ -77,6 +77,10 @@ const employeeSchema: Schema = new Schema(
       type: Boolean,
       default: false
     },
+    isEmployee: {
+      type: Boolean,
+      default: false
+    },
     isSupervisor: {
       type: Boolean,
       default: false

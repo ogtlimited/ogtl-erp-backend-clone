@@ -52,6 +52,7 @@ export class CreateEmployeeDto {
   public last_name: string;
 
   @IsString()
+  @IsOptional()
   public middle_name: string;
 
   @IsString()
@@ -61,13 +62,18 @@ export class CreateEmployeeDto {
   @IsString()
   public status: string;
 
-  @IsOptional()
   @IsString()
+  @IsOptional()
   public branch: string;
 
-  @IsOptional()
   @IsBoolean()
+  @IsOptional()
   public isExpatriate: boolean;
+
+  
+  @IsBoolean()
+  @IsOptional()
+  public isEmployee: boolean;
 
   @IsOptional()
   @IsBoolean()
@@ -83,6 +89,7 @@ export class CreateEmployeeDto {
 
   @IsOptional()
   leaveCount: number;
+  
 
 
 
@@ -104,6 +111,7 @@ export class UpdateEmployeeDto {
   public department: string;
 
   @IsString()
+  @IsOptional()
   public password: string;
 
   @IsString()
@@ -123,6 +131,7 @@ export class UpdateEmployeeDto {
   public last_name: string;
 
   @IsString()
+  @IsOptional()
   public middle_name: string;
 
   @IsString()
@@ -141,14 +150,22 @@ export class UpdateEmployeeDto {
   @IsBoolean()
   public isExpatriate: boolean;
 
-  @IsOptional()
   @IsBoolean()
+  @IsOptional()
+  public isEmployee: boolean;
+
+
+  @IsBoolean()
+  @IsOptional()
   public isRepSiever: boolean;
 
-  @IsOptional()
   @IsBoolean()
+  @IsOptional()
   public isLeaverApprover: boolean;
 
+  @IsOptional()
+  @IsString()
+  public projectId: string;
 
 
 }
