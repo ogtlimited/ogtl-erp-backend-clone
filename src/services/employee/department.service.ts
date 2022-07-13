@@ -1,11 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { HttpException } from '@exceptions/HttpException';
 import { isEmpty } from '@utils/util';
-import  {IDepartment}  from '@/interfaces/employee-interface/department.interface';
-import { CreateDepartmentDto,UpdateDepartmentDto } from '@/dtos/employee/department.dto';
-import  departmentModel  from '@models/department/department.model';
+import { IDepartment } from '@/interfaces/employee-interface/department.interface';
+import { CreateDepartmentDto, UpdateDepartmentDto } from '@/dtos/employee/department.dto';
+import departmentModel from '@models/department/department.model';
 import { slugify } from '@/utils/slugify';
-
 
 
 class DepartmentService{
@@ -16,8 +15,7 @@ class DepartmentService{
  */
 
 public async findAllDepartments(): Promise<IDepartment[]>{
-    const Departments : IDepartment[] = await this.Departments.find();
-    return Departments;
+  return this.Departments.find();
     }
 
 /**
@@ -25,7 +23,7 @@ public async findAllDepartments(): Promise<IDepartment[]>{
  */
 
 public async findDepartmentById(DepartmentId:string) : Promise<IDepartment>{
-   
+
     //Check if Id is empty
     if (isEmpty(DepartmentId)) throw new HttpException(400, "No Id provided");
 
@@ -36,16 +34,16 @@ public async findDepartmentById(DepartmentId:string) : Promise<IDepartment>{
 
     return findDepartment;
 
-   
+
     }
 
     /**
-     *Creates a new Department 
+     *Creates a new Department
      */
 
 
      public async createDepartment(DepartmentData: CreateDepartmentDto) : Promise<IDepartment>{
-        
+
         //Check if data is empty
        if (isEmpty(DepartmentData)) throw new HttpException(400, "No data provided");
 
@@ -62,7 +60,7 @@ public async findDepartmentById(DepartmentId:string) : Promise<IDepartment>{
 
 
     /**
-     *Updates existing Department 
+     *Updates existing Department
      */
 
      public async updateDepartment(DepartmentId:string,DepartmentData: UpdateDepartmentDto)  : Promise<IDepartment>{
@@ -79,7 +77,7 @@ public async findDepartmentById(DepartmentId:string) : Promise<IDepartment>{
           { new: true });
         if(!updateDepartmentById) throw new HttpException(409, "Department doesn't exist");
          return updateDepartmentById;
-   } 
+   }
 
 
      //deletes existing Department

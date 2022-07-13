@@ -18,11 +18,11 @@ class DepartmentRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.get(`${this.path}`,authMiddleware, this.DepartmentController.getDepartments);
+        this.router.get(`${this.path}`, this.DepartmentController.getDepartments);
         this.router.get(`${this.path}/:id`,authMiddleware, this.DepartmentController.getDepartmentById);
-        this.router.post(`${this.path}`, authMiddleware,validationMiddleware(CreateDepartmentDto, 'body'), this.DepartmentController.CreateDepartment);
+        this.router.post(`${this.path}`, validationMiddleware(CreateDepartmentDto, 'body'), this.DepartmentController.CreateDepartment);
         this.router.put(`${this.path}/:id`,authMiddleware, validationMiddleware(UpdateDepartmentDto, 'body', true), this.DepartmentController.updateDepartment);
-        this.router.delete(`${this.path}/:id`,authMiddleware, this.DepartmentController.deleteDepartment);
+        this.router.delete(`${this.path}/:id`, this.DepartmentController.deleteDepartment);
       }
     }
 
