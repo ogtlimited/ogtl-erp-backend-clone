@@ -23,7 +23,7 @@
 //         PORT: 3000,
 //         NODE_ENV: 'production',
 //       },
-    },
+//     },
     {
       name: 'dev', // pm2 start App name
       script: 'ts-node', // ts-node
