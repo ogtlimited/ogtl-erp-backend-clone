@@ -1,2 +1,2 @@
 # ogtl-erp-backend
-Outsource ERP System Backend
+Outsource ERP System Backend.
