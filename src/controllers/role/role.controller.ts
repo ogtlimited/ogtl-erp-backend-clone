@@ -6,7 +6,7 @@ import { IRole } from '@/interfaces/role/role.interface';
 import RoleService from '@/services/role/role.service';
 
 class RoleController {
-    public roleService;
+    public roleService = new RoleService();
 
     constructor() {
         this.roleService = new RoleService();
